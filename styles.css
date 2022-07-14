@@ -1,3 +1,121 @@
 body {
-    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+  /* background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); */
+  font-family: font-serif;
+  background-color: rgb(91, 146, 195);
   }
+
+  .pepe{
+    background-color: green;
+  }
+
+.cartcolor{
+  color: rgb(39, 122, 152);
+}
+
+#shadow{
+  -webkit-box-shadow: -12px 1px 24px 3px rgba(0,0,0,0.27); 
+  box-shadow: -12px 1px 24px 3px rgba(0,0,0,0.27);
+}
+
+.bordeazul{
+  border-right:2px solid rgb(41, 148, 170)
+}
+
+.sucarrito{
+  color: rgb(37, 90, 125);
+}
+
+.guitar{
+  color: rgb(13, 13, 85);
+}
+
+.button{
+    background:rgb(49, 119, 225);
+}
+
+.hoveragregar:hover{
+  background-color: rgb(114, 182, 242);
+}
+
+.hoverborrar:hover{
+  background-color: rgba(255, 33, 33, 0.908);
+}
+
+.hovercompra:hover{
+  background-color: rgb(36, 113, 228);
+}
+
+input[type="radio"]  { display: none;}
+
+label{
+  display: inline-block;
+  position: relative;
+  border-radius: 5px;
+  padding-left: 3rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  width: fit-content;
+}
+
+label::before{
+  content: "";
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  left: 17px;
+  top:1.1rem;
+  cursor: pointer;
+  border: 3px solid white;
+
+}
+
+input[type="radio"]:checked + label:before{
+  background-color: rgb(87, 134, 204);
+}
+
+.selectText{
+  margin-top: -0.6rem;
+  width: 100%;
+  padding: 0.7rem 0;
+  padding-left: 0.7rem;
+  border-radius: 0.3rem;
+}
+
+.floating-label {
+  position: relative;
+  pointer-events: none;
+  bottom:2.3rem;
+  left:-2rem;
+  transition: 0.01s ease all;  
+}
+
+.inputstyle:focus  ~ .floating-label,
+.inputstyle:not(:focus):valid ~ .floating-label{
+ 
+  bottom: 3.8rem;
+  font-size: 15px;
+  opacity: 1;
+  color: #3887CF;
+  background-color: white;
+  padding: 0 1rem;
+  border-radius: 1.2rem;
+  
+}  
+
+.flecha select{
+  background: url(./logos/flechaselect.png) no-repeat ;
+  background-position: relative;
+  background-position-x:95%;
+  background-position-y: center;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: white;
+  margin-top: 2rem;
+ 
+
+}
