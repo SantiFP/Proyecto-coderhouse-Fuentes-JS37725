@@ -1,12 +1,5 @@
 body {
-  /* background: rgb(2,0,36);
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); */
-  font-family: font-serif;
   background-color: rgb(91, 146, 195);
-  }
-
-  .pepe{
-    background-color: green;
   }
 
 .cartcolor{
@@ -20,10 +13,6 @@ body {
 
 .bordeazul{
   border-right:2px solid rgb(41, 148, 170)
-}
-
-.sucarrito{
-  color: rgb(37, 90, 125);
 }
 
 .guitar{
@@ -107,7 +96,7 @@ input[type="radio"]:checked + label:before{
 }  
 
 .flecha select{
-  background: url(./logos/flechaselect.png) no-repeat ;
+  background: url(../logos/flechaselect.png) no-repeat ;
   background-position: relative;
   background-position-x:95%;
   background-position-y: center;
@@ -118,4 +107,8 @@ input[type="radio"]:checked + label:before{
   margin-top: 2rem;
  
 
+}
+
+.fender{
+  width: 3rem;
 }

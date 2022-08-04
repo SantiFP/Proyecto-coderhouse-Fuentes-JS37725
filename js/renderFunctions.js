@@ -1,31 +1,36 @@
-// Aquí, con esta función renderizo en el div las guitarras según elección del ususario(acústicas,eléctricas o electroacústicas)
+// Aquí en esta funcion renderizo guitarras en el div con el id renderguitars
 
-const renderGuitars = (array) => {
+const renderGuitars = async (array) => {
 
-    let htmlguitars = '';
+    let htmlGuitars = '';
 
-    array.forEach(el => {
+    let guitars = await array;
 
-        htmlguitars += `<div class=" w-3/4 mx-auto  ">
-            <div id="shadow" class="bg-white rounded-3xl pt-4 guitar flex flex-col  lg:p-0 lg:flex lg:flex-row justify-center guitar   ">
-                <div class="border-b-2 border-blue-400 pb-5 lg:border-b-0 lg:border-r-2 lg:py-4 lg:w-1/3 flex items-center "> <img class="imglogo h-20 mx-auto " src=${el.logo} alt="img"></div>
-                <div class="flex flex-col border-b-2 border-blue-400 pb-6 items-center justify-center space-y-2 py-4 lg:border-b-0 lg:border-r-2 lg:p-0 lg:w-1/3 ">
-                    <div class="text-xl">${el.brand}</div>
-                    <div class=" text-xl">${el.model}</div>
+    guitars.forEach(el => {
+
+        htmlGuitars += `
+                <div  class="flex flex-col items-center w-3/4 mt-4 lg:w-1/4 lg:ml-6 ">
+
+                <div id="shadow" class="w-full flex flex-col bg-white w-full items-center text-center space-y-3 pb-4 font-montserrat font-medium rounded-md">
+                    
+                    <img class="w-36 pb-2 rounded-lg" src="../logos/fender-stratocaster.png" alt="img">
+                    <p>${el.brand}</p>
+                    <p>${el.model}</p>
+                    <p>$${el.price}</p>
+            
                 </div>
-                <div class="flex flex-col pb-6 lg:p-0  lg:w-1/3 items-center py-4 space-y-2 justify-center">
-                    <div class="text-xl">$${el.price}</div>
+
+                <div onclick=pushToCart(${el.id}) class="font-cart text-sm font-semibold cursor-pointer flex hoveragregar bg-blue-300 px-4 py-2 rounded-b-xl">
+                    <button >AGREGAR AL CARRITO</button>
+                    <img class="h-6 w-6 ml-3" src="../logos/add-to-cart.png" alt="">
                 </div>
+
             </div>
-            <div class="flex justify-center -mb-5">
-                <button onclick="pushToCart(${el.id})" class="hoveragregar bg-blue-300 px-4 py-2 rounded-b-xl" >Agregar al carrito</button>
-            </div>
-        </div>
             `;
 
     });
 
-    guitarshtml.innerHTML = htmlguitars
+    guitarsHtml.innerHTML = htmlGuitars
 
 }
 
@@ -34,31 +39,35 @@ const renderGuitars = (array) => {
 
 const renderGuitarsCart = (array) => {
 
-    let htmlguitars = '';
+    let htmlGuitars = '';
 
     array.forEach((el) => {
 
-        htmlguitars += `<div class=" w-3/4 mx-auto  ">
-            <div id="shadow" class="bg-white rounded-3xl pt-4 guitar flex flex-col  lg:p-0 lg:flex lg:flex-row justify-center guitar   ">
-                <div class="border-b-2 border-blue-400 pb-5 lg:border-b-0 lg:border-r-2 lg:py-4 lg:w-1/3 flex items-center "> <img class="imglogo h-20 mx-auto " src=${el.logo} alt="img"></div>
-                <div class="flex flex-col border-b-2 border-blue-400 pb-6 items-center justify-center space-y-2 py-4 lg:border-b-0 lg:border-r-2 lg:p-0 lg:w-1/3 ">
-                    <div class="text-xl">${el.brand}</div>
-                    <div class=" text-xl">${el.model}</div>
-                </div>
-                <div class="flex flex-col pb-6 lg:p-0  lg:w-1/3 items-center py-4 space-y-2 justify-center">
-                    <div class=" text-xl">Cantidad: ${el.amount}</div>
-                    <div class="text-sm ">$${el.amount * el.price}</div>
-                </div>
+        
+
+        htmlGuitars += `<div  class="flex flex-col items-center w-3/4 mt-4 lg:w-1/4 lg:ml-6 ">
+
+            <div id="shadow" class="w-full flex flex-col bg-white w-full items-center text-center space-y-3 pb-4 font-montserrat font-medium rounded-md">
+                
+                <img class="w-36 pb-2 rounded-lg" src="../logos/fender-stratocaster.png" alt="img">
+                <p>${el.brand}</p>
+                <p>${el.model}</p>
+                <p>Cantidad: ${el.amount}
+                <p>$${el.price * el.amount}</p>
+        
             </div>
-            <div class="flex justify-center -mb-5">
-                <button onclick="remove(${el.id})" class="hoverborrar bg-red-500 px-4 py-2 rounded-b-xl" >Eliminar del carrito</button>
+
+            <div class="font-cart font-semibold">
+                <button onclick=remove(${el.id}) class="hoverborrar bg-red-500 px-4 py-2 rounded-b-xl">ELIMINAR DEL CARRITO</button>
             </div>
+
+
         </div>
             `;
 
     });
 
-    guitarshtml.innerHTML = htmlguitars
+    guitarsHtml.innerHTML = htmlGuitars
 
 };
 
@@ -74,7 +83,7 @@ const renderTotal = () => {
     if (totalHtml) {
         total.innerHTML = `<p class="bg-blue-400 px-3 py-2 text-center">Total:$${totalHtml}<br>
         el total tiene el iva incluido</p>`;
-        continueToPayment.innerHTML = `<a href="#planesdepago"><button onclick=renderPayment() class="bg-blue-500 hovercompra px-8 py-2 text-base rounded-xl">
+        continueToPayment.innerHTML = ` <a href="#planesdepago"><button onclick=renderPayment() class="bg-blue-600 hover:bg-blue-700 px-8 py-2 text-base rounded-xl">
         CONTINUAR AL PAGO</button></a>`
         total.classList.remove('hidden');
         continueToPayment.classList.remove('hidden')
@@ -97,7 +106,7 @@ const renderPayment = () => {
         let totalHtml = iva(totalPrice(cartFromStorage));
 
         paymentDiv.classList.remove('hidden');
-        paymentDiv.innerHTML = `<div id="planesdepago" class=" bg-white text-center px-4 py-2 text-blue-900 rounded-md lg:-mt-20">
+        paymentDiv.innerHTML = `<div id="planesdepago" class=" bg-white text-center px-4 py-2 text-blue-900 rounded-md">
                                 <p>Seleccione plan de pago:</p>
                                 <p>Tarjeta de crédito hasta en 12 cuotas sin recargo</p>
                                 <p class="text-xs pt-2">15% de descuento con pago con tarjeta Visa
@@ -106,13 +115,13 @@ const renderPayment = () => {
 
                                 <div id="formtarjeta" >
                                     <input type="radio" id="visa" name="payment" value="Visa">
-                                    <label  for="visa"><img class="w-20 h-20 -mt-1" src="./logos/visa.png" alt=""></label><br>
+                                    <label  for="visa"><img class="w-20 h-20 -mt-1" src="../logos/visa.png" alt=""></label><br>
 
                                     <input type="radio" id="mastercard" name="payment" value="Mastercard">
-                                    <label class="-mt-3" for="mastercard"><img class="w-24 h-12" src="./logos/mastercard.png" alt=""></label><br>
+                                    <label class="-mt-3" for="mastercard"><img class="w-24 h-12" src="../logos/mastercard.png" alt=""></label><br>
 
                                     <input type="radio" id="diners" name="payment" value="Diners">
-                                    <label for="diners"><img class="w-26 h-12" src="./logos/diners.png" alt=""></label>
+                                    <label for="diners"><img class="w-26 h-12" src="../logos/diners.png" alt=""></label>
                                 </div>
 
                                 <div id="formcuotas">
@@ -128,7 +137,8 @@ const renderPayment = () => {
 
                                 </div>
 
-                                <div class="pb-4 pl-4"><button id="btnsubmit" class="rounded-full py-3 px-12 button text-xl">COMPRAR</button></div>
+                                <div class="pb-4 pl-4"><button id="btnsubmit" class="rounded-full py-3 hover:bg-blue-700 px-12 button text-xl">COMPRAR</button></div>
+
                                     
                             </form>`  
 

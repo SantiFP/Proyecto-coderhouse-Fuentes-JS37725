@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer components{
+    .guitarsdiv{
+        @apply flex flex-col py-4 items-center w-full lg:-mt-7 lg:flex lg:flex-row lg:flex-wrap lg:pl-8 lg:justify-start
+    }
+
+    .btn{
+        @apply rounded-full py-2 px-5 hover:bg-sky-700 lg:px-8
+    }
+
+}
+
+

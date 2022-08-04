@@ -1,6 +1,7 @@
 // Esta funcion se encarga de filtrar guitarras por su propiedad type
 
-const typeFilter = (match) => {
+const typeFilter = async (match) => {
+    let guitars = await getGuitars();
     const filteredGuitars = guitars.filter(guitar => guitar.type == match);
     return filteredGuitars
 };
@@ -28,8 +29,8 @@ const totalAmount = (array) => {
 // Esta funcion se encarga del calculo del iva
 
 const iva = (price) => {
-    resultado = price + (price * 0.22);
-    return Math.round(resultado);
+    result = price + (price * 0.22);
+    return Math.round(result);
 }
 
 // Aquí defino la función remove para remover guitarras del carrito y actualizar el carrito en el storage
@@ -40,15 +41,23 @@ const remove = (id) => {
 
     let guitar = cart.find(guitar => guitar.id === id);
 
-    if (guitar && guitar.amount > 1) {
-        guitar.amount--
-    } else {
-        cart.splice(guitarIndex, 1)
-    };
+    (guitar && guitar.amount > 1) ? guitar.amount--: cart.splice(guitarIndex, 1);
+
     enJson = JSON.stringify(cart);
     localStorage.setItem('cart', enJson);
     renderGuitarsCart(cart);
     renderTotal();
+
+    cart.length == 0 && localStorage.removeItem('cart');
+
+    Toastify({
+        text: 'Guitarra eliminada del carrito',
+        duration: 1500,
+        style: {
+            background: 'white',
+            color: 'blue'
+        },
+    }).showToast();
 }
 
 // Aquí defino la función para agregar guitarras al carrito y guardarlas en el localstorage
@@ -59,12 +68,7 @@ const pushToCart = (id) => {
 
     let productInCart = cart.find(guitar => guitar.id === id);
 
-    if (productInCart) {
-        productInCart.amount++;
-    } else {
-        guitar.amount = 1;
-        cart.push(guitar);
-    };
+    productInCart ? productInCart.amount++ : (guitar.amount = 1, cart.push(guitar))
 
     const enJson = JSON.stringify(cart);
     localStorage.setItem('cart', enJson);

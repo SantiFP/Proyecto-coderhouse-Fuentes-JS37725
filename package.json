@@ -1,0 +1,23 @@
+{
+  "name": "proyecto-coderhouse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "npx tailwindcss -i ./src/tailwind.css -o ./public/final.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SantiFP/Proyecto-coderhouse-Fuentes-JS37725.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SantiFP/Proyecto-coderhouse-Fuentes-JS37725/issues"
+  },
+  "homepage": "https://github.com/SantiFP/Proyecto-coderhouse-Fuentes-JS37725#readme",
+  "dependencies": {
+    "tailwindcss": "^3.1.7"
+  }
+}
