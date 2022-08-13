@@ -1,1 +1,1 @@
-Para ejecutar el proyecto abrir con live server el archivo index.html ubicado en la carpeta public
+Para ejecutar el proyecto abrir con live server el archivo index.html ubicado en la carpeta public.
