@@ -8,6 +8,7 @@
 @tailwind utilities;
 
 @layer components{
+
     .guitarsdiv{
         @apply flex flex-col py-4 items-center w-full lg:-mt-7 lg:flex lg:flex-row lg:flex-wrap lg:pl-8 lg:justify-start
     }
@@ -16,6 +17,43 @@
         @apply rounded-full py-2 px-5 hover:bg-sky-700 lg:px-8
     }
 
+    .welcome{
+        @apply rounded-3xl bg-blue-400 py-3  lg:flex lg:items-center lg:px-4 lg:mr-4 lg:justify-center lg:rounded-full 
+    }
+
+    .description{
+        @apply flex flex-col text-center mt-4 space-y-5 rounded-2xl bg-blue-300 py-3 px-4 lg:p-0 lg:py-1  lg:m-0
+    }
+      
+    .white{
+        @apply text-blue-600 outline-none bg-white rounded-2xl px-3 py-1 hover:bg-slate-200
+    } 
+
+    .input{
+        @apply py-6 pl-4 pr-8 placeholder-blue-500 font-semibold outline-none text-blue-700 w-3/4  lg:w-2/4
+    }
+
+    .inicio{
+        @apply flex flex-col space-y-12 text-xl text-white mt-24 w-3/4 mx-auto lg:mt-36 lg:pl-16 lg:space-y-0 lg:flex lg:flex-row lg:justify-center lg:items-center lg:space-x-24
+    }
+
+    .btninicio{
+        @apply bg-blue-500 cursor-pointer px-10 py-4 text-center  rounded-xl lg:px-20 lg:py-12 
+    }
+
+    .form{
+        @apply  flex flex-col items-center space-y-5 justify-center w-3/4 mx-auto mt-12
+
+    }
+    .header{
+        @apply flex flex-col items-center text-white lg:flex lg:flex-row lg:justify-around lg:items-center lg:pt-4 
+    }
+    .session{
+        @apply flex flex-col items-center space-y-2 pb-2 lg:flex lg:flex-row lg:space-y-0 lg:justify-center lg:items-center lg:ml-2
+    }
+    .title{
+        @apply flex flex-col items-center space-y-2 pt-6 lg:p-0 lg:text-center lg:pt-16 lg:flex lg:flex-row lg:justify-center lg:space-x-4 lg:items-center lg:pl-10
+    }
 }
 
 

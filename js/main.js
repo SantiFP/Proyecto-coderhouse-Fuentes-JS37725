@@ -1,7 +1,5 @@
-// Definición de un algoritmo en JavaScript que realice peticiones http usando fetch.
-// Fetch es un método que javascript ofrece para solicitar recursos externos sin interrumpir la ejecución del script, es una manera práctica
-// de manejar promesas(objetos que representan eventos a futuro que al ser completados podrían producir algún valor)
-
+// Obtengo el carro del storage y si existe el arreglo cart pasara a contener estos datos obtenidos de la clave 'cart' del storage
+ 
 let cart = [];
 let cartInLs = JSON.parse(localStorage.getItem('cart'));
 if (cartInLs) {
@@ -9,7 +7,7 @@ if (cartInLs) {
 };
 
 // Capturo los elementos del dom con los que voy a definir los eventos
-const verCarrito = document.getElementById('vercarrito');
+
 const total = document.getElementById('total');
 const continueToPayment = document.getElementById('continuaralpago');
 const allGuitarsButton = document.getElementById('allguitars');
@@ -19,10 +17,10 @@ const electricAcousticGuitarButton = document.getElementById('electricacousticgu
 const paymentDiv = document.getElementById('pagodiv');
 const guitarsHtml = document.getElementById('renderguitars');
 
-// Cada boton captura un evento click y la función manejadora renderiza las guitarras filtradas por tipo o todas las guitarras en el div con id 
-// renderguitar y remueve de este mismo div el total a pagar,el boton de continuar al pago y el div con el form de pago(el total a pagar y el boton
-// de continuar al pago son visibles solamente al hacer click en ver carrito siempre que haya productos en el carrito,y el form solamente
-// es visible al hacer click en continuar al pago)
+// Cada boton captura un evento click y la función manejadora renderiza las guitarras filtradas por tipo o todas las guitarras en el div con 
+// id renderguitar y remueve de este mismo div el total a pagar,el boton de continuar al pago y el div con el form de pago(el total a pagar y 
+// el boton de continuar al pago son visibles solamente al hacer click en ver carrito siempre que haya productos en el carrito,
+// y el form solamente es visible al hacer click en continuar al pago)
 
 allGuitarsButton.addEventListener('click', async () => {
     let guitars = await getGuitars();
@@ -45,20 +43,21 @@ electricAcousticGuitarButton.addEventListener('click', () => {
     toggleClass()
 })
 
-// Esta función define la reacción al evento click del botón vercarrito, renderizando el carrito obtenido del storage(o un array vacio 
-// si no hay datos en el storage) y el total a pagar así como el botón de continuar al pago, tambien esconde el div del form de pago,este solo se 
-// verá al hacer click en continuar al pago
+// Esta función define la reacción al evento click del botón vercarrito, renderizando el carrito obtenido del storage y el total a pagar así 
+// como el botón de continuar al pago, tambien esconde el div del form de pago,este solo se verá al hacer click en continuar al pago.
+// Si no se obtiene del localStorage un item con la clave cart, en el div con id renderguitars se mostrará un mensaje indicando que no 
+// hay guitarras en el carrito.
 
-verCarrito.addEventListener('click', () => {
+const seeCart = () => {
     if (localStorage.getItem('cart')) {
         const fromJson = JSON.parse(localStorage.getItem('cart'));
         renderGuitarsCart(fromJson)
         renderTotal();
         paymentDiv.classList.add('hidden')
     }else{
-        renderGuitarsCart(cart);
+        guitarsHtml.innerHTML = `<p class="text-white text-lg px-6 py-8 bg-blue-500 mt-4 lg:mt-0 lg:ml-60">No hay guitarras en el carrito</p>`
     }
-})
+};
 
 // Aquí en esta funcion se agregan clases para ocultar el total a pagar,el boton de continuar al pago, y el form de pago.
 
@@ -75,13 +74,5 @@ const getCartStorage = () => {
     renderGuitarsCart(cartStorage);
 };
 
-document.addEventListener("DOMContentLoaded", async () => {
-    if (localStorage.getItem('cart') == null) {
-        let guitars = await getGuitars();
-        renderGuitars(guitars);
-        toggleClass();
-    }else{
-        getCartStorage();
-        renderTotal(); 
-    }
-})
+
+

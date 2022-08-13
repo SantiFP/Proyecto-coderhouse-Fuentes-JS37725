@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,61 +19,126 @@
 </head>
 
 <body>
-    <div id="view">
 
-        <header class="text-white flex flex-col space-y-6 pb-2 items-center pt-4 ">
-            <div class="text-center lg:flex lg:flex-row">
-                <p class="rounded-3xl bg-blue-400 py-3 w-3/4 mx-auto lg:flex lg:items-center lg:px-4 lg:mr-4 lg:justify-center lg:rounded-full ">
-                 Bienvenido a nuestra tienda de guitarras</p>
-                <div class="flex flex-col text-center mt-4 space-y-5 w-5/6 mx-auto rounded-2xl bg-blue-300 py-3 px-4 lg:p-0 lg:py-1  lg:m-0"> 
-                    <p>Tenemos variedad de guitarras. <br> Acústicas,eléctricas y electroacústicas. </p>
+    <div id="home">
+
+        <div id="header" class="title">
+            <p class="bg-blue-400 py-6 px-10 text-3xl text-white lg:m-0 ">Guitar store</p>
+            <button id="nav" class="hidden bg-blue-300 px-4 py-1 rounded-2xl"></button>
+        </div>
+
+        <div id="inicio" class="inicio">
+
+            <div id="btnlogin" class="btninicio">
+                <p >INICIAR SESIÓN</p>
+            </div>
+
+            <div id="btnregistro" class="btninicio">
+                <p>REGISTRARSE</p>
+            </div>
+
+        </div>
+
+        <form id="formregistro" class="hidden form">
+
+            <input id="name" class="input" placeholder="Nombre de usuario" type="text">
+            <input id="email" class="input" placeholder="Email" type="email">
+            <input id="password" class="input" placeholder="Password" type="password">
+            <input id="confirmpassword" class="input" placeholder="Confirmar contraseña" type="password">
+
+            <button id="registro" class="btnlogin rounded-lg py-4 px-14 hover:bg-blue-600">REGISTRARSE</button>
+
+        </form>
+
+        <form id="formlogin" class="hidden form lg:mt-32">
+
+            <input id="loginname" class="input" placeholder="Nombre de usuario" type="text">
+            <input id="loginpassword" class="input" placeholder="Password" type="password">
+
+            <button class="btnlogin rounded-lg py-4 px-14 hover:bg-blue-600">INICIAR SESIÓN</button>
+
+        </form>
+
+    </div>
+
+    <div id="view" class="hidden">
+
+        <header class="header">
+
+            <div class="session ">
+                
+                <p id="welcome" class="bg-blue-400 px-4 py-2 lg:mr-4 "></p>
+                <div class=" text-center lg:block ">
+                    <button id="cerrarsesion" class="btn button text-black">Cerrar sesión</button>
+                </div>
+            </div>
+            <div class="lg:flex lg:flex-row">
+                <p class="text-center welcome"> Bienvenido a nuestra tienda de guitarras</p>
+                <div class="description px-4 pb-2 ">
+                    <p>Tenemos variedad de guitarras.<br> Acústicas,eléctricas y electroacústicas. </p>
                     <p>Qué tipo de guitarra esta interesado en comprar</p>
                 </div>
             </div>
+            <div class="mt-2 lg:block lg:flex lg:flex-col lg:space-y-4 lg:mt-4 lg:pb-4 ">
+                <button id="togglemode">White mode</button>
+                <div class="hidden text-center  lg:block ">
+                    <button onclick="seeCart()" class="btn button text-black">Ver carrrito</button>
+                </div>
+            </div>
+
         </header>
 
         <div class="lg:flex lg:flex-row lg:space-x-2 lg:mx-auto lg:mt-4 lg:w-[95%]">
-        
+
             <div class="flex flex-col items-center text-white w-3/4 mx-auto mt-2 lg:w-[30%]">
 
                 <div class="flex flex-col space-y-5 pt-1">
-                    <p class="bg-blue-400 px-3 py-2 text-center btnblue">Aquí puedes filtrar por categoría o ver todas las guitarras</p>
+                    <p class="bg-blue-400 px-3 py-2 text-center btnblue">Aquí puedes filtrar por categoría o ver todas
+                        las guitarras</p>
                     <button id="allguitars" class="btn button">Todas las guitarras</button>
                     <button id="electricguitarbutton" class="btn button">Guitarras eléctricas</button>
                     <button id="acousticguitarbutton" class="btn button">Guitarras acústicas</button>
                     <button id="electricacousticguitarbutton" class="btn button">Guitarras eléctroacústicas</button>
-                    <div class="text-center"><button id="vercarrito" class="btn button">Ver carrrito</button></div>
+                    <div class="text-center lg:hidden">
+                        <button onclick="seeCart()" class="btn button vercarrito text-black">Ver carrrito</button>
+                    </div>
                 </div>
 
             </div>
-            
+
             <div id="renderguitars" class="guitarsdiv ">
+
 
             </div>
 
         </div>
-    
-        <div id="total" class="flex justify-center pb-4 mt-5 lg:w-4/6 lg:mx-auto lg:justify-end" >        
-            
-        </div> 
+
+        <div id="total" class="flex justify-center pb-4 mt-5 lg:w-4/6 lg:mx-auto lg:justify-end">
+
+        </div>
 
         <div id="continuaralpago" class=" flex justify-center pb-4 lg:mx-auto lg:-mt-[4.4rem]">
-          
+
         </div>
 
-        <div class="flex flex-col items-center " id="pagodiv">
-        
+        <div class="flex flex-col items-center hidden" id="pagodiv">
+
         </div>
-       
+
+
+
 
     </div>
+
     <script src="../js/renderFunctions.js"></script>
     <script src="../js/someFunctions.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/fetch.js"></script>
+    <script src="../js/whiteMode.js"></script>
+    <script src="../js/login.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-   
+
 
 </body>
 
-</html>  
+</html>

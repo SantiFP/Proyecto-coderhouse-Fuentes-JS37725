@@ -6,7 +6,7 @@ module.exports = {
       fontFamily:{
         montserrat:['Montserrat Alternates'],
         cart:['Julius Sans One']
-      }
+      },
     }
     
     // ...

@@ -33,7 +33,8 @@ const iva = (price) => {
     return Math.round(result);
 }
 
-// Aquí defino la función remove para remover guitarras del carrito y actualizar el carrito en el storage
+// Aquí defino la función remove para remover guitarras del carrito y actualizar el carrito en el storage, también al eliminar la última 
+// guitarra se renderiza en el div un mensaje de no hay guitarras en el carrito.
 
 const remove = (id) => {
 
@@ -47,8 +48,11 @@ const remove = (id) => {
     localStorage.setItem('cart', enJson);
     renderGuitarsCart(cart);
     renderTotal();
-
-    cart.length == 0 && localStorage.removeItem('cart');
+    
+    if(cart.length == 0)(
+    localStorage.removeItem('cart'),
+    guitarsHtml.innerHTML = `<p class="text-white text-lg px-6 py-8 bg-blue-500 mt-4 lg:mt-0 lg:ml-60">No hay guitarras en el carrito</p>`
+    );
 
     Toastify({
         text: 'Guitarra eliminada del carrito',
@@ -60,7 +64,7 @@ const remove = (id) => {
     }).showToast();
 }
 
-// Aquí defino la función para agregar guitarras al carrito y guardarlas en el localstorage
+// Aquí defino la función para agregar guitarras al carrito y guardarlas en el localstorage dentro de la clave cart.
 
 const pushToCart = (id) => {
 

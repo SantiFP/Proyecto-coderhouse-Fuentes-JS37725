@@ -1,3 +1,5 @@
+// En este archivo obtengo los datos mediante fetch desde un archivo json llamado stock.json
+
 const API = '../js/stock.json';
 
 const getGuitars = async ()=>{
