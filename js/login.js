@@ -197,8 +197,6 @@ formLogin.addEventListener('submit', async (e) => {
     const getUsers = localStorage.getItem('users');
     const getUsersFromJson = JSON.parse(getUsers);
 
-    console.log(getUsersFromJson);
-
     if (getUsersFromJson) {
         for (let i = 0; i < getUsersFromJson.length; i++) {
             if (getUsersFromJson[i].name === name && getUsersFromJson[i].password === password) {
